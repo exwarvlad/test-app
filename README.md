@@ -1,24 +1,56 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## SQL Task
 
-Things you may want to cover:
+Дана таблица users вида - id, group_id
 
-* Ruby version
+```sql
+CREATE TABLE users(id bigserial, group_id bigint);
+INSERT INTO users(group_id) VALUES (1), (1), (1), (2), (1), (3); 
+```
 
-* System dependencies
+В этой таблице, упорядоченой по ID необходимо: 
 
-* Configuration
+1.    Выделить непрерывные группы по group_id с учетом указанного порядка записей (их 4) 
 
-* Database creation
+```sql
+SELECT group_id, COUNT(id) AS group_total
+FROM users
+GROUP BY group_id ORDER BY group_id ASC;
 
-* Database initialization
+group_id | group_total
+----------+-------------
+       1 |           4
+       2 |           1
+       3 |           1
+(3 rows)
+```
 
-* How to run the test suite
+2.    Подсчитать количество записей в каждой группе 
+```sql
+SELECT group_id, COUNT(group_id) AS group_total
+FROM users
+GROUP BY group_id;
 
-* Services (job queues, cache servers, search engines, etc.)
+group_id | group_total
+---------+-------------
+       1 |           4
+       3 |           1
+       2 |           1
+(3 rows)
+```
 
-* Deployment instructions
+3.   Вычислить минимальный ID записи в группе
 
-* ...
+```sql
+SELECT group_id, MIN(id) AS min_id
+FROM users
+GROUP BY group_id;
+
+group_id | min_id
+---------+--------
+       1 |      1
+       3 |      6
+       2 |      4
+(3 rows)
+```

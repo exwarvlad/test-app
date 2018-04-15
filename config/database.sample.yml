@@ -2,13 +2,13 @@ default: &default
   adapter: postgresql
   encoding: unicode
   host: localhost
-  username: root
-  password:
+  username: db_user
+  password: db_pass
 
 development:
   <<: *default
-  database: umbrellio_dev
+  database: app_name_dev
 
 test:
   <<: *default
-  database: umbrellio_test
+  database: app_name_test

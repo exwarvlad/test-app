@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/zdennis/activerecord-import.git
+  revision: 114b91b97ea242dae33c7f341d8954205483f08d
+  specs:
+    activerecord-import (0.22.0)
+      activerecord (>= 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -179,6 +186,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-import!
   awesome_print (= 1.8.0)
   bullet (= 5.6.1)
   byebug (= 9.1.0)

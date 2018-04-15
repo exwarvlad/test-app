@@ -17,6 +17,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 4.8.2'
   gem 'faker', '~> 1.8.5'
   gem 'rspec-rails', '~> 3.6'
+  gem 'activerecord-import', github: 'zdennis/activerecord-import'
 end
 
 group :test do

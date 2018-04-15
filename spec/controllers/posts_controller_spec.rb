@@ -1,6 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
+  describe 'GET #index' do
+    subject         { get :index, params: params }
+    let(:user)      { create :user }
+    let(:address)   { create :ip_address }
+    let!(:top_post) { create :post, average_rate: 5, user_id: user.id, ip_address_id: address.id }
+    let!(:posts)    { create_list(:post, 50, user_id: user.id, ip_address_id: address.id) }
+    let(:params)    { {page: 1, per_page: 50} }
+
+    context 'returns paginated_collection' do
+      it { expect(JSON.parse(subject.body).size).to eq(50) }
+      it { expect(JSON.parse(subject.body).first.first).to eq(top_post.title) }
+      it { expect(JSON.parse(subject.body).first.second).to eq(top_post.description) }
+    end
+  end
+
   describe 'POST #create' do
     subject { post :create, params: params }
 

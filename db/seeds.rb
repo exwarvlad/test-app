@@ -20,8 +20,8 @@ TOTAL_USERS_COUNT.times do
 end
 
 Rails.logger.debug { "Building #{TOTAL_IPS_COUNT} ip addresses." }
-TOTAL_USERS_COUNT.times do
-  users << FactoryBot.build(:user)
+TOTAL_IPS_COUNT.times do
+  ips << FactoryBot.build(:ip_address)
 end
 
 Rails.logger.debug { "Building #{TOTAL_POSTS_COUNT} posts." }

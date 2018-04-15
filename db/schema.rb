@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180415083654) do
+ActiveRecord::Schema.define(version: 20180415195102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20180415083654) do
     t.bigint "ip_address_id"
     t.string "title", null: false
     t.text "description", null: false
-    t.float "average_rate"
+    t.float "average_rate", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["average_rate"], name: "index_posts_on_average_rate"

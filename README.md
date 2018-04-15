@@ -8,6 +8,13 @@
 curl -H "Content-Type: application/json" -X POST -d  '{"post": {"title": "Post about nature", "description": "Nature is the capital of Great Britain", "ip_address": "128.127.22.44",    "user_login":"eugene.zhdanov"}}'     http://localhost:3000/posts
 ```
 
+2. Поставить оценку посту. Принимает айди поста и значение, возвращает новый средний рейтинг поста. Важно: экшен должен 
+корректно отрабатывать при любом количестве конкурентных запросов на оценку одного и того же поста.
+
+```bash
+curl -H "Content-Type: application/json" -X POST -d  '{"rate": {"value": 5}  }' http://localhost:3000/posts/145000/rates
+```
+
 ## SQL Task
 
 Дана таблица users вида - id, group_id

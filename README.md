@@ -1,5 +1,13 @@
 # README
 
+## Rails task
+
+1. Создать пост. Принимает заголовок и содержание поста (не могут быть пустыми), а также логин и айпи автора. Если автора с таким логином еще нет, необходимо его создать. Возвращает либо атрибуты поста со статусом 200, либо ошибки валидации со статусом 422.
+
+```bash
+curl -H "Content-Type: application/json" -X POST -d  '{"post": {"title": "Post about nature", "description": "Nature is the capital of Great Britain", "ip_address": "128.127.22.44",    "user_login":"eugene.zhdanov"}}'     http://localhost:3000/posts
+```
+
 ## SQL Task
 
 Дана таблица users вида - id, group_id

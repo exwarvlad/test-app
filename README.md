@@ -20,6 +20,11 @@ curl -H "Content-Type: application/json" -X POST -d  '{"rate": {"value": 5}  }' 
 curl -H "Content-Type: application/json" -X GET -d  '{"page": "1", "per_page": "50" }' http://localhost:3000/posts/
 ```
 
+4. Получить список айпи, с которых постило несколько разных авторов. Массив объектов с полями: айпи и массив логинов авторов.
+```bash
+curl -H "Content-Type: application/json" -X GET -d  '{"page": "1", "per_page": "50" }' http://localhost:3000/ip_addresses/
+```
+
 ## SQL Task
 
 Дана таблица users вида - id, group_id

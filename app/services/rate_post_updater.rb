@@ -19,10 +19,12 @@ class RatePostUpdater
   def call
     return nil unless valid?
 
-    post.tap do |p|
-      p.rates.create(post_id: p.id, value: rate_value)
-      p.average_rate = p.rates.pluck(:value).inject(:+).to_f / p.rates.size
-    end.save
+    post.with_lock do
+      post.tap do |p|
+        p.rates.create(post_id: p.id, value: rate_value)
+        p.average_rate = p.rates.pluck(:value).inject(:+).to_f / p.rates.size
+      end.save
+    end
 
     post
   end

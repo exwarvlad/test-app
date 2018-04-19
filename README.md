@@ -12,7 +12,7 @@ curl -H "Content-Type: application/json" -X POST -d  '{"post": {"title": "Post a
 корректно отрабатывать при любом количестве конкурентных запросов на оценку одного и того же поста.
 
 ```bash
-curl -H "Content-Type: application/json" -X POST -d  '{"rate": {"value": 5}  }' http://localhost:3000/posts/145000/rates
+ab -n 1000 -c 100  -T 'application/json' -p ./concurrency-data.json http://127.0.0.1:3000/posts/145000/rates
 ```
 
 3. Получить топ N постов по среднему рейтингу. Просто массив объектов с заголовками и содержанием.
